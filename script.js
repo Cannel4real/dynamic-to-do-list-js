@@ -4,21 +4,19 @@ document.addEventListener('DOMContentLoaded',() =>{
     const taskList = document.getElementById('task-list');
 
     function addTask() {
-        const taskText = taskInput.value.trim();
-        console.log(taskText);
+        let taskText = taskInput.value.trim();
         
-        if(taskText === '') {
-            alert('Please enter a task');
+        if(taskText !== '') {
             
-        } else {
-            let taskItem = document.createElement('li');
+            const taskItem = document.createElement('li');
             taskItem.textContent = taskText;
             taskList.appendChild(taskItem);
-            taskInput.value = '';
 
-           let removeButton = document.createElement('button');
+
+           const removeButton = document.createElement('button');
            removeButton.textContent = 'Remove';
-           removeButton.classList.add('remove-btn');
+           removeButton.className = 'remove-btn';
+
            removeButton.addEventListener('click', () => {
             taskItem.remove();
            })
@@ -26,21 +24,19 @@ document.addEventListener('DOMContentLoaded',() =>{
            taskList.appendChild(taskItem);
 
            taskInput.value = '';
-        };
+        } else {
+            alert('Please enter a task');
+        }
 
-        addButton.addEventListener('click', () => {
-            addTask();
-        })
+        addButton.addEventListener('click', addTask);
 
         taskInput.addEventListener('keydown', (event) => {
             if(event.key === 'Enter') {
                 addTask();
             }
-        })
+        });
 
     }
     addTask();
-    console.log(addTask());
-    document.addEventListener('DOMContentLoaded', addTask())
-    return
+ 
 })
