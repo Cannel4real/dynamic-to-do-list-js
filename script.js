@@ -43,11 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.appendChild(taskItem);
     }
 
-    // Function to add a new task
     function addTask() {
         let taskText = taskInput.value.trim();
 
-        if (taskText !== '') {
+        if (taskText !== "") {
             // Add task to tasks array
             tasks.push(taskText);
 
